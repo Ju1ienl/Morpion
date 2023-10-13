@@ -7,8 +7,6 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
-using System.Security.Policy;
-using System.Text.RegularExpressions;
 
 namespace morpion
 {
@@ -19,7 +17,17 @@ namespace morpion
         // Fonction permettant l'affichage du Morpion
         public static void AfficherMorpion(int j, int k)
         {
-            // A compléter 
+        	for ( j = 0; j < 3; j++)
+            {
+                Console.Write("\n|====|====|====|====|\n");
+                Console.Write("|");
+                for ( k = 0; k < 3; k++)
+                {
+                    Console.Write(" -- ");
+                    Console.Write("|");
+                }
+                
+            }
         }
 
         // Fonction permettant de changer
@@ -91,7 +99,6 @@ namespace morpion
 
             // Fin de la partie
             // A compléter 
-
             Console.ReadKey();
     }
   }
