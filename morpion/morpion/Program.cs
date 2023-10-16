@@ -38,7 +38,17 @@ namespace morpion
         // n'est pas déjà jouée
         public static bool AJouer(int j, int k, int joueur)
         {
-            // A compléter 
+            // A compléter
+            for (j=0; j < grille.GetLength(0); j++)
+			{
+				for (k=0; k < grille.GetLength(1); k++)
+				{
+					if (j>=0 && j<3 && k>=0 && k<3)
+            		{
+            			return true;
+            		}
+				}
+			}
             return false;
         }
 
@@ -87,21 +97,26 @@ namespace morpion
 							c = int.Parse(Console.ReadLine()) - 1;
 
 							// A compléter 
-							for (j=0; j < grille.GetLength(0); j++)
+							if (joueur == 1)
 							{
-								for (k=0; k < grille.GetLength(1); k++)
+								for (j=0; j < grille.GetLength(0); j++)
 								{
-									grille[l,c]=1;
+									for (k=0; k < grille.GetLength(1); k++)
+									{
+										grille[l,c]=1;
+									}
 								}
 							}
-							for (j=0; j < grille.GetLength(0); j++)
+							else
 							{
-								for (k=0; k < grille.GetLength(1); k++)
+								for (j=0; j < grille.GetLength(0); j++)
 								{
-									grille[l,c]=0;
+									for (k=0; k < grille.GetLength(1); k++)
+									{
+										grille[l,c]=0;
+									}
 								}
 							}
-
 						}
 						catch (Exception e)
 						{
