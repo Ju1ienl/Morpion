@@ -29,7 +29,7 @@ namespace morpion
             }
         	Console.Write("\n|====|====|====|\n");
         }
-
+		
         // Fonction permettant de changer
         // dans le tableau qu'elle est le 
         // joueur qui à jouer
@@ -72,8 +72,9 @@ namespace morpion
 					while(!gagner && essais != 9)
 					{
 						// A compléter 
+						Console.Clear();
 						AfficherMorpion(j,k);
-						
+								
 						try
 						{
 							Console.WriteLine("Ligne   =    ");
@@ -86,6 +87,20 @@ namespace morpion
 							c = int.Parse(Console.ReadLine()) - 1;
 
 							// A compléter 
+							for (j=0; j < grille.GetLength(0); j++)
+							{
+								for (k=0; k < grille.GetLength(1); k++)
+								{
+									grille[l,c]=1;
+								}
+							}
+							for (j=0; j < grille.GetLength(0); j++)
+							{
+								for (k=0; k < grille.GetLength(1); k++)
+								{
+									grille[l,c]=0;
+								}
+							}
 
 						}
 						catch (Exception e)
