@@ -50,21 +50,34 @@ namespace morpion
         public static bool AJouer(int j, int k, int joueur)
         {
             // A compléter
-				for (k=0; k < grille.GetLength(1); k++)
-				{
-					if (j>=0 && j<3 && k>=0 && k<3)
-            		{
-            			return true;
-            		}
-				}
+            if (j>=0 && j<3 && k>=0 && k<3)
+            {
+            	if (grille[j,k]==10)
+            	{
+            		grille[j,k]=joueur;
+            		return true;
+            	}
+            }
             return false;
         }
 
         // Fonction permettant de vérifier
         // si un joueur à gagner
-        public static bool Gagner(int l, int c, int joueur)
+        public static bool Gagner(int l, int c, int joueur) 
         {
             // A compléter 
+            if (grille[l,0] == grille[l,1] && grille[l,1] == grille[l,2] && grille[l,0] != 10)
+            {
+            	return true;
+            }
+            if (grille[0,c] == grille[1,c] && grille[1,c] == grille[2,c] && grille[0,c] != 10)
+            {
+            	return true;
+            }
+            if (grille[0,0] == grille[1,1] && grille[1,1] == grille[2,2] || grille[2,0] == grille[1,1] && grille[1,1] == grille[0,2] && grille[1,1] != 10)
+            {
+            	return true;
+            }
             return false;
         }
 
