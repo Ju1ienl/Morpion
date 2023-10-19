@@ -23,8 +23,6 @@ namespace morpion
                 Console.Write("|");
                 for ( k = 0; k < grille.GetLength(1); k++)
                 {
-                	Console.Write(" -- ");
-                    Console.Write("|");
                     if (grille[j,k] == 1)
                 	{
                 		Console.Write("X");
@@ -33,6 +31,11 @@ namespace morpion
                 	{
                 		Console.Write("0");
                 	}
+                	else
+                	{
+                		Console.Write("    ");
+                	}
+                	Console.Write("|");
                 }    
             }
         	Console.Write("\n|====|====|====|\n");
@@ -47,8 +50,6 @@ namespace morpion
         public static bool AJouer(int j, int k, int joueur)
         {
             // A compléter
-            for (j=0; j < grille.GetLength(0); j++)
-			{
 				for (k=0; k < grille.GetLength(1); k++)
 				{
 					if (j>=0 && j<3 && k>=0 && k<3)
@@ -56,7 +57,6 @@ namespace morpion
             			return true;
             		}
 				}
-			}
             return false;
         }
 
