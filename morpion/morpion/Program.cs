@@ -25,6 +25,14 @@ namespace morpion
                 {
                 	Console.Write(" -- ");
                     Console.Write("|");
+                    if (grille[j,k] == 1)
+                	{
+                		Console.Write("X");
+                	}
+                	if (grille[j,k] == 2)
+                	{
+                		Console.Write("0");
+                	}
                 }    
             }
         	Console.Write("\n|====|====|====|\n");
