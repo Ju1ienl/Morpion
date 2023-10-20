@@ -104,6 +104,7 @@ namespace morpion
 					{
 						// A compléter 
 						Console.Clear();
+						Console.WriteLine("c'est au tour de "+joueur);
 						AfficherMorpion(j,k);
 								
 						try
