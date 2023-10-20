@@ -49,7 +49,6 @@ namespace morpion
         // n'est pas déjà jouée
         public static bool AJouer(int j, int k, int joueur)
         {
-            // A compléter
             if (j>=0 && j<3 && k>=0 && k<3)
             {
             	if (grille[j,k]==10)
@@ -65,7 +64,6 @@ namespace morpion
         // si un joueur à gagner
         public static bool Gagner(int l, int c, int joueur) 
         {
-            // A compléter 
             if (grille[l,0] == grille[l,1] && grille[l,1] == grille[l,2] && grille[l,0] != 10)
             {
             	return true;
@@ -74,7 +72,7 @@ namespace morpion
             {
             	return true;
             }
-            if (grille[0,0] == grille[1,1] && grille[1,1] == grille[2,2] || grille[2,0] == grille[1,1] && grille[1,1] == grille[0,2] && grille[1,1] != 10)
+            if (((grille[0,0] == grille[1,1] && grille[1,1] == grille[2,2]) || (grille[2,0] == grille[1,1] && grille[1,1] == grille[0,2])) && grille[1,1] != 10)
             {
             	return true;
             }
@@ -102,13 +100,9 @@ namespace morpion
 			        grille[j,k] = 10;
 					while(!gagner && essais != 9)
 					{
-						// A compléter 
 						Console.Clear();
-						Console.WriteLine("c'est au tour de "+joueur);
+						Console.WriteLine("c'est au tour du joueur "+joueur);
 						AfficherMorpion(j,k);
-						bonnePosition = AJouer(j,k,joueur);
-						gagner=Gagner(l,c,joueur);
-								
 						try
 						{
 							Console.WriteLine("Ligne   =    ");
@@ -118,9 +112,13 @@ namespace morpion
 							l = int.Parse(Console.ReadLine()) - 1; 
 							// Peut changer en fonction de comment vous avez fait votre tableau.
 							Console.SetCursorPosition(LigneDébut + 10, ColonneDébut + 10); // Permet de manipuler le curseur dans la fenêtre 
-							c = int.Parse(Console.ReadLine()) - 1;
-
-							// A compléter 
+							c = int.Parse(Console.ReadLine()) - 1; 
+							bonnePosition = AJouer(j,k,joueur);
+							gagner=Gagner(l,c,joueur);
+							if (bonnePosition == true && gagner == false)
+							{
+								grille[l,c]=joueur;
+							}
 						}
 						catch (Exception e)
 						{
@@ -147,7 +145,7 @@ namespace morpion
 						else
 						{
 							Console.WriteLine("mauvais placement");
-								
+							Console.ReadKey(true);
 						}
 						
 						
@@ -161,7 +159,7 @@ namespace morpion
             {
             	Console.WriteLine("égalité");
             }
-            else
+            if (gagner == true)
             {
             	Console.WriteLine("le gagnant est le joueur "+joueur);
             } 
