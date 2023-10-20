@@ -25,13 +25,13 @@ namespace morpion
                 {
                     if (grille[j,k] == 1)
                 	{
-                		Console.Write("X");
+                		Console.Write("  X ");
                 	}
                 	if (grille[j,k] == 2)
                 	{
-                		Console.Write("0");
+                		Console.Write("  0 ");
                 	}
-                	else
+                	if (grille[j,k] == 10)
                 	{
                 		Console.Write("    ");
                 	}
@@ -49,15 +49,15 @@ namespace morpion
         // n'est pas déjà jouée
         public static bool AJouer(int j, int k, int joueur)
         {
-            if (j>=0 && j<3 && k>=0 && k<3)
+            if (j >= 0 && j < 3 && k >= 0 && k < 3)
             {
-            	if (grille[j,k]==10)
+            	if (grille[j,k] == 10)
             	{
             		grille[j,k]=joueur;
             		return true;
             	}
             }
-            return false;
+            return false; // pb tjr false
         }
 
         // Fonction permettant de vérifier
@@ -113,7 +113,7 @@ namespace morpion
 							// Peut changer en fonction de comment vous avez fait votre tableau.
 							Console.SetCursorPosition(LigneDébut + 10, ColonneDébut + 10); // Permet de manipuler le curseur dans la fenêtre 
 							c = int.Parse(Console.ReadLine()) - 1; 
-							bonnePosition = AJouer(j,k,joueur);
+							bonnePosition = AJouer(l,c,joueur);
 							gagner=Gagner(l,c,joueur);
 							if (bonnePosition == true && gagner == false)
 							{
