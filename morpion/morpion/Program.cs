@@ -106,6 +106,8 @@ namespace morpion
 						Console.Clear();
 						Console.WriteLine("c'est au tour de "+joueur);
 						AfficherMorpion(j,k);
+						bonnePosition = AJouer(j,k,joueur);
+						gagner=Gagner(l,c,joueur);
 								
 						try
 						{
@@ -119,26 +121,6 @@ namespace morpion
 							c = int.Parse(Console.ReadLine()) - 1;
 
 							// A compléter 
-							if (joueur == 1)
-							{
-								for (j=0; j < grille.GetLength(0); j++)
-								{
-									for (k=0; k < grille.GetLength(1); k++)
-									{
-										grille[l,c]=1;
-									}
-								}
-							}
-							else
-							{
-								for (j=0; j < grille.GetLength(0); j++)
-								{
-									for (k=0; k < grille.GetLength(1); k++)
-									{
-										grille[l,c]=0;
-									}
-								}
-							}
 						}
 						catch (Exception e)
 						{
@@ -146,7 +128,29 @@ namespace morpion
 						}
 
 						// Changement de joueur
-						// A compléter 
+						if (gagner==true)
+						{
+							break;
+						}
+						if (bonnePosition == true && gagner == false)
+						{
+							essais = essais+1;
+							if (joueur == 1 )
+							{
+								joueur=2;
+							}
+							else
+							{
+								joueur=1;
+							}
+						}
+						else
+						{
+							Console.WriteLine("mauvais placement");
+								
+						}
+						
+						
 
 					}; // Fin TQ
 
