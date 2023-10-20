@@ -155,7 +155,16 @@ namespace morpion
 					}; // Fin TQ
 
             // Fin de la partie
-            // A compléter 
+            Console.Clear();
+            AfficherMorpion(j,k);
+            if ( gagner == false && essais == 9)
+            {
+            	Console.WriteLine("égalité");
+            }
+            else
+            {
+            	Console.WriteLine("le gagnant est le joueur "+joueur);
+            } 
             Console.ReadKey();
     }
   }
